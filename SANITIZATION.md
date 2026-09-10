@@ -45,14 +45,26 @@ tried first and the configured data root second.
 *Behavioural effect:* none for a repository-relative manifest, which still resolves at
 the first candidate exactly as before. A frozen manifest is unaffected.
 
-### 3. `app.py` — evidence-base figures annotated
+### 3. `app.py` — evidence-base figures labelled as publication reference
 
 The interface displays the composition of the frozen research evidence base (105
-records, 715 segments). Those constants are **unchanged**, so the published interface is
-inspectable exactly as evaluated, but a comment now states that they describe a corpus
-which is not distributed and will not describe a store you build yourself.
+evidence-bearing records, 27 full text, 78 abstract-only, 715 indexed segments, 107
+retained). **Every one of those values is unchanged**, so the published interface stays
+inspectable exactly as evaluated. Only the surrounding wording changed, so a public user
+running the application against their own index cannot misread them as live counts:
 
-*Behavioural effect:* none. Comment only. See [Known caveat](#known-caveat).
+- the sidebar heading reads **"Publication reference evidence base"** rather than
+  "Evidence base", and carries the line *"frozen research corpus · not live index
+  counts"*;
+- the evidence caption opens **"Publication reference evidence base: …"** and closes
+  *"These are frozen publication figures for the research corpus, not live counts for
+  the index currently in use."*;
+- the constants carry a comment stating they are publication-reference figures, not a
+  live count of the index in use.
+
+*Behavioural effect:* none. Labels and comments only; no number, no computation and no
+retrieval, generation or evaluation logic was touched. No runtime count is computed to
+replace them — see [Known caveat](#known-caveat).
 
 ### 4. `requirements-lock.txt` — re-encoded
 
@@ -93,10 +105,21 @@ capstone deliverable document, `FREEZE_BACKUPS/`, `DEMO_RUNTIME/`, caches and lo
 
 ## Known caveat
 
-The interface reports the frozen evidence base as 105 records / 715 segments. If you
-build your own index, those figures in the sidebar will not describe it. They are kept
-so the evaluated interface is faithfully reproduced; edit `EVIDENCE_BASE_*` in `app.py`
-if you point the system at your own corpus.
+The evidence-base figures shown in the interface are **publication reference figures**,
+and the distinction matters if you run this against your own data:
+
+| | |
+|---|---|
+| **Frozen / publication figures** | 105 evidence-bearing records (27 full text · 78 abstract-only), 715 indexed evidence segments, 107 retained in total with 2 carrying no usable text. Historical scientific reference values for the corpus the published evaluation ran against. |
+| **Your runtime index** | Whatever you build. Its composition will differ, and nothing in the UI reports it. |
+| **What ships here** | Neither the frozen corpus nor the frozen index. Only the code, plus a synthetic example corpus. |
+
+The figures are kept verbatim, and deliberately **not** replaced with a computed runtime
+count, so the evaluated interface is reproduced faithfully and no invented number enters
+the published record. They are labelled as publication reference in the UI so they
+cannot be mistaken for live counts. If you point the system at your own corpus and want
+the sidebar to describe it, edit `EVIDENCE_BASE_*` in `app.py` — those constants are
+display values only and feed no retrieval, generation or evaluation logic.
 
 ## Verification
 

@@ -392,9 +392,13 @@ restating it, was the correct call and is documented in the decision log.
 - No real clinical deployment, no patient data, no regulatory assessment.
 - The research corpus and frozen index are **not included** for copyright reasons, so
   the published retrieval results cannot be reproduced from this repository alone.
-- The interface reports the frozen evidence base (105 records, 715 segments). Those
-  figures describe a corpus that is not distributed; they will not describe an index
-  you build. See [SANITIZATION.md](SANITIZATION.md).
+- The evidence-base figures in the interface (105 evidence-bearing records, 27 full
+  text, 78 abstract-only, 715 indexed segments, 107 retained) are **publication
+  reference figures**: historical scientific values for the frozen research corpus, not
+  live counts for whatever index the application is pointed at. That corpus and index
+  are not shipped with this repository, so an index you build will differ. The UI labels
+  them as publication reference for exactly this reason. See
+  [SANITIZATION.md](SANITIZATION.md).
 
 ---
 

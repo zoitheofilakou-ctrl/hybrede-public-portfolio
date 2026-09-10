@@ -35,12 +35,17 @@ def load_external_search():
     return fetch_rehabilitation_papers, None
 
 
-# PUBLIC RELEASE NOTE
-# The figures below describe the *frozen research evidence base* used for the
-# published evaluation. That corpus and its index are not distributed with this
-# repository (see DATA_POLICY.md). They are kept verbatim so the published
-# interface is inspectable exactly as evaluated; if you build your own evidence
-# store these counts will not describe it, and you should update them to match.
+# PUBLICATION REFERENCE FIGURES - NOT LIVE RUNTIME COUNTS
+# The constants below are fixed publication-reference figures describing the
+# *frozen research evidence base* used for the published evaluation. They are
+# historical scientific reference values, not a live count of whatever index the
+# application is currently pointed at.
+#
+# That frozen corpus and its index are not distributed with this repository (see
+# DATA_POLICY.md). The figures are kept verbatim so the published interface is
+# inspectable exactly as evaluated. If you build your own evidence store its
+# composition will differ, and these values will not describe it; the UI labels
+# them as publication reference so they cannot be misread as runtime counts.
 #
 # Authoritative frozen evidence-base composition (data/processed/corpus_source_manifest_v3.json
 # and data/processed/run_manifests/retrieval_index.json).
@@ -50,9 +55,11 @@ EVIDENCE_BASE_ABSTRACT = 78
 EVIDENCE_BASE_SEGMENTS = 715
 
 EVIDENCE_BASE_SUMMARY = (
-    "Evidence base: 105 evidence-bearing records (27 full text · 78 abstract only) "
-    "across 715 indexed evidence segments. 107 records were retained in total; the "
-    "remaining 2 had no usable text and sit outside the retrieval evidence base."
+    "Publication reference evidence base: 105 evidence-bearing records "
+    "(27 full text · 78 abstract only) across 715 indexed evidence segments. "
+    "107 records were retained in total; 2 had no usable text. These are frozen "
+    "publication figures for the research corpus, not live counts for the index "
+    "currently in use."
 )
 
 # Retrieval depth is fixed at the evaluated configuration and is deliberately not a
@@ -205,7 +212,8 @@ def render_sources(sources, disposition):
 
     Per-excerpt full-text/abstract provenance is deliberately not shown: text_source
     is absent from the live sources contract, and it is not reconstructed here. The
-    authoritative corpus-level split is stated in EVIDENCE_BASE_SUMMARY instead.
+    corpus-level split for the publication reference corpus is stated in
+    EVIDENCE_BASE_SUMMARY instead.
     Retrieval and reranking scores are also deliberately withheld — they are ranking
     signals, not measures of evidential strength.
     """
@@ -963,12 +971,13 @@ k_articles = EVALUATED_K
 with st.sidebar:
     st.markdown(
         '<div class="sb-block">'
-        '<div class="sb-head">Evidence base</div>'
+        '<div class="sb-head">Publication reference evidence base</div>'
         f'<div class="sb-figure">{EVIDENCE_BASE_RECORDS}</div>'
         '<div class="sb-figure-label">evidence-bearing papers</div>'
         '<div class="sb-split">'
         f"{EVIDENCE_BASE_FULLTEXT} full text · {EVIDENCE_BASE_ABSTRACT} abstract-only<br>"
-        f"{EVIDENCE_BASE_SEGMENTS} indexed evidence segments"
+        f"{EVIDENCE_BASE_SEGMENTS} indexed evidence segments<br>"
+        "frozen research corpus · not live index counts"
         "</div>"
         "</div>",
         unsafe_allow_html=True,
