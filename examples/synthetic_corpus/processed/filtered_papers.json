@@ -1,0 +1,23 @@
+[
+  {
+    "paperId": "synthetic0000000000000000000000000000001",
+    "title": "A synthetic study of hybrid retrieval in clinical literature screening",
+    "decision": "INCLUDE",
+    "verification": "VALID",
+    "reason": "Synthetic example record."
+  },
+  {
+    "paperId": "synthetic0000000000000000000000000000002",
+    "title": "Synthetic notes on evidence sufficiency gating for generated answers",
+    "decision": "INCLUDE",
+    "verification": "VALID",
+    "reason": "Synthetic example record."
+  },
+  {
+    "paperId": "synthetic0000000000000000000000000000003",
+    "title": "Synthetic full-text example for chunking and reranking",
+    "decision": "INCLUDE",
+    "verification": "VALID",
+    "reason": "Synthetic example record."
+  }
+]

@@ -32,3 +32,25 @@ env/
 Thumbs.db
 .vscode/
 .idea/
+
+# Never publish: private research corpus, frozen runtime, backups
+# (belt-and-braces on top of the data/ and rag_store/ rules above)
+DEMO_RUNTIME/
+FREEZE_BACKUPS/
+corrected_sources/
+v3_full_text/
+*.bundle
+*.zip
+*.docx
+chroma.sqlite3
+*.safetensors
+*.pt
+*.onnx
+.hf_cache/
+tmp_retrieval_query.json
+
+# Exception: the synthetic example corpus is fabricated text written for this
+# repository. It contains no real, copyrighted or third-party content, and it
+# must ship so the smoke test can build a real index without any corpus.
+!examples/synthetic_corpus/
+!examples/synthetic_corpus/**

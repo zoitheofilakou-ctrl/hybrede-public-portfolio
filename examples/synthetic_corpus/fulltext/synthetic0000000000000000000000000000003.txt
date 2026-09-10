@@ -1,0 +1,36 @@
+Introduction
+
+This document is synthetic prose written for the HyBreDe public code release. It is
+not a research article, it reports no real results, and it reproduces no copyrighted
+material. Its only function is to give the indexing pipeline a multi-section body so
+that section splitting, chunking, dense embedding, BM25 scoring, cross-encoder
+reranking and MMR diversification can all be exercised end to end.
+
+Methods
+
+In this fictional description, candidate passages are produced by two independent
+retrievers. A dense retriever encodes each chunk with a sentence embedding model and
+ranks by cosine similarity. A lexical retriever scores the same chunks with BM25 over
+tokenised text. The two candidate lists are merged, and the merged pool is passed to a
+cross-encoder that scores each query-passage pair directly. A diversification step then
+selects a final set that balances relevance against redundancy, so that several near
+identical passages from one document cannot crowd out a second supporting source.
+
+Results
+
+No real results exist for this synthetic document. Any figure appearing here is an
+invented placeholder. A reader should treat every sentence in this file as fabricated
+example text rather than evidence, and a generated answer that cites this document is
+demonstrating plumbing, not scientific support.
+
+Discussion
+
+The practical point this synthetic body illustrates is that the retrieval stack can be
+inspected and executed without access to the private research corpus. Users who want
+meaningful retrieval behaviour must assemble their own corpus under their own licence
+review, as described in DATA_POLICY.md.
+
+Conclusion
+
+This file is synthetic. It is safe to redistribute because it was written for this
+repository and describes nothing real.

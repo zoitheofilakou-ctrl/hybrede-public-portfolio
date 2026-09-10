@@ -1,0 +1,21 @@
+{
+  "version": 3,
+  "note": "Synthetic source manifest for the public release smoke test. Paths are relative to HYBREDE_DATA_DIR and are resolved by Retrieval.retrieval.resolve_manifest_path.",
+  "records": [
+    {
+      "paperId": "synthetic0000000000000000000000000000001",
+      "source_type": "abstract",
+      "selected_text_path": ""
+    },
+    {
+      "paperId": "synthetic0000000000000000000000000000002",
+      "source_type": "abstract",
+      "selected_text_path": ""
+    },
+    {
+      "paperId": "synthetic0000000000000000000000000000003",
+      "source_type": "fulltext",
+      "selected_text_path": "fulltext/synthetic0000000000000000000000000000003.txt"
+    }
+  ]
+}

@@ -2,13 +2,14 @@
 
 ## What this repository can and cannot do
 
-**Can:** be read and reviewed; run the acquisition and screening stages against your
-own corpus with your own API keys; reuse the immutability utilities directly; study
-the evaluation and governance methodology.
+**Can:** be read and reviewed; run the **entire pipeline** — acquisition, screening,
+extraction, indexing, hybrid retrieval, reranking, diversification, generation and
+claim verification — against your own corpus with your own API keys; reuse the
+immutability utilities directly; study the evaluation and governance methodology.
 
 **Cannot:** reproduce the original published retrieval results. That needs the frozen
-corpus and index, which are copyrighted and not redistributable, plus the retrieval and
-generation modules, which are omitted for authorship reasons.
+corpus and index, which are copyrighted and not redistributable. The code is no longer
+the limitation; the data is.
 
 This is stated up front so nobody wastes time trying.
 
@@ -75,7 +76,7 @@ between API requests to respect the Semantic Scholar rate limit.
 
 ## Using the immutability utilities standalone
 
-`src/indexing/immutable_index.py` has no third-party dependencies and is usable on any
+`immutable_index.py` has no third-party dependencies and is usable on any
 directory tree you want to protect during an experiment:
 
 ```python
@@ -101,7 +102,7 @@ byte-identical.
 
 1. Run stage 1 with your own topical queries.
 2. Run stage 2 to filter against the inclusion/exclusion criteria in
-   `src/screening/llm_screening.py`.
+   `screening/llm_screening.py`.
 3. Obtain full text through channels you are entitled to use (institutional access,
    PubMed Central, Europe PMC, author copies).
 4. Index with your own retrieval stack — the design is described in

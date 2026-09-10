@@ -10,8 +10,13 @@ excludes:
 - PubMed Central full-text XML
 - corpus excerpts, passages or quoted article content
 - vector stores, BM25 indexes or any artifact derived from article text
+- the frozen research evidence store (Chroma persistence, HNSW binaries,
+  `lexical_index.json`) and the private demo runtime it was served from
+- evaluation result payloads that quote corpus excerpts
+- freeze backups, git bundles and archived snapshots of the private repository
 
-This is deliberate and non-negotiable.
+This is deliberate and non-negotiable. **The full application code is included**; only
+data and data-derived artifacts are withheld. See [SANITIZATION.md](SANITIZATION.md).
 
 ## Why
 
@@ -27,8 +32,10 @@ An embedding store built from article text still encodes it. Excluding the PDFs 
 shipping the index would not solve the problem, so neither is included.
 
 The `.gitignore` in this repository blocks `data/`, `*.pdf`, `fulltext/`,
-`harvested_pdfs/`, `rag_store/`, `*.sqlite3` and `*.bin` so that corpus material cannot
-be committed by accident.
+`harvested_pdfs/`, `corrected_sources/`, `rag_store/`, `DEMO_RUNTIME/`,
+`FREEZE_BACKUPS/`, `*.sqlite3`, `*.bin`, `*.safetensors`, `*.bundle` and `*.zip` so
+that corpus material, runtime state and model binaries cannot be committed by
+accident.
 
 ## What this means for reproduction
 
@@ -38,7 +45,7 @@ redistributable. See [`docs/reproducibility.md`](docs/reproducibility.md).
 
 ## Building your own corpus
 
-The acquisition stage in `src/acquisition/scraper.py` collects **bibliographic metadata
+The acquisition stage in `data_acquisition/scraper.py` collects **bibliographic metadata
 only** — titles, abstracts, years, identifiers and citation counts from the Semantic
 Scholar Graph API. It does not download publisher content. That metadata layer is what
 drives screening, and you can rebuild it yourself with your own API key.
@@ -60,8 +67,12 @@ licence of each item is recorded alongside it.
 
 "It was freely downloadable" is not a licence. Verify per item, or ship nothing.
 
-At present this repository ships no sample corpus. The `examples/` directory explains
-what a compliant one would look like.
+This repository ships no sample of *real* literature. It does ship
+`examples/synthetic_corpus/` — three fabricated records written for this repository,
+describing nothing real and reproducing nothing copyrighted. They exist so the indexing
+and retrieval code can be executed end to end without any corpus at all. Three invented
+records demonstrate plumbing, not retrieval quality. The `examples/` directory also
+explains what a compliant real sample corpus would look like.
 
 ## Personal data
 

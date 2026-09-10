@@ -1,8 +1,10 @@
 # Architecture
 
-A description of the HyBreDe system design. Components marked **(not included)** were
-principally authored by capstone collaborators and are described here rather than
-redistributed — see [CONTRIBUTIONS.md](../CONTRIBUTIONS.md).
+A description of the HyBreDe system design. **The implementation of every stage
+described below is now included in this repository**, including the modules principally
+authored by capstone collaborators; per-module authorship is recorded in
+[CONTRIBUTIONS.md](../CONTRIBUTIONS.md). What is *not* included is the research corpus
+and the frozen evidence store — see [DATA_POLICY.md](../DATA_POLICY.md).
 
 ## Two phases
 
@@ -13,7 +15,7 @@ shifting underneath it.
 
 ## Offline: corpus construction
 
-### 1. Metadata acquisition — `src/acquisition/scraper.py`
+### 1. Metadata acquisition — `data_acquisition/scraper.py`
 
 Queries the Semantic Scholar Graph API across a set of topical queries, restricted to
 2020–2024, requesting only the fields the downstream stages need: title, abstract,
@@ -22,7 +24,7 @@ year, external identifiers, URL, citation count. Results are deduplicated on
 
 Only bibliographic metadata is retrieved. No publisher content is downloaded here.
 
-### 2. LLM-assisted screening — `src/screening/llm_screening.py`
+### 2. LLM-assisted screening — `screening/llm_screening.py`
 
 Two-step screening of each title/abstract pair:
 
@@ -43,18 +45,19 @@ Design properties worth noting:
 - **Audit logging.** Every validated decision is appended to an audit log with a
   UTC timestamp, paper id, decision and validation status.
 
-### 3. Full-text acquisition and extraction **(not included)**
+### 3. Full-text acquisition and extraction — `data_acquisition/PDFscraper.py`, `data_acquisition/pdf_to_text.py`
 
-For the screened set, full text is obtained and converted to plain text. This stage is
-excluded from the public repository for both authorship and copyright reasons.
+For the screened set, full text is obtained and converted to plain text, with fuzzy
+title matching used to confirm that an extracted document is the paper it claims to be.
+The code is included; the harvested PDFs and extracted text are not.
 
-### 4. Indexing — hybrid store **(retrieval indexer not included)**
+### 4. Indexing — hybrid store — `Retrieval/retrieval.py` (`index` command)
 
 The screened corpus is segmented and indexed twice: into a dense vector store
 (ChromaDB, `all-MiniLM-L6-v2` embeddings) and into a BM25 lexical index. The frozen
 publication-facing identity was **715 Chroma segments and 715 BM25 records**.
 
-### Immutability controls — `src/indexing/immutable_index.py` *(included, sole authorship)*
+### Immutability controls — `immutable_index.py`
 
 This module enforces that evaluation can never mutate the canonical index:
 
@@ -71,7 +74,7 @@ This module enforces that evaluation can never mutate the canonical index:
 In practice this gave a provable statement in the publication record: the canonical
 index tree hash was identical before and after the evaluation run.
 
-## Online: retrieval and synthesis **(mostly not included)**
+## Online: retrieval and synthesis — `Retrieval/retrieval.py`, `llm/rag_generator.py`
 
 ### 5. Hybrid candidate generation
 

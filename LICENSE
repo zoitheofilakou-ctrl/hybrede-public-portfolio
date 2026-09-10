@@ -1,5 +1,6 @@
 MIT License
 
+Copyright (c) 2026 Turku University of Applied Sciences - ICT Capstone Team
 Copyright (c) 2026 Zoi Theofilakou
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,21 +21,52 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+NOTICE: This system is intended for academic research and literature
+pre-screening purposes only. It does not provide clinical recommendations
+and does not replace professional medical judgment.
+
 ---------------------------------------------------------------------------
-SCOPE OF THIS LICENCE
+COPYRIGHT AND SCOPE
+---------------------------------------------------------------------------
 
-This licence applies ONLY to the source code contained in this repository,
-which is limited to material the copyright holder authored and is entitled to
-redistribute.
+HyBreDe is a MULTI-AUTHOR work. It began as a group ICT capstone project at
+Turku University of Applied Sciences and was afterwards developed further,
+independently, by Zoi Theofilakou.
 
-It specifically does NOT apply to, and does not relicense:
+Both copyright lines above are therefore deliberate:
 
-  * The original Turku University of Applied Sciences ICT capstone repository,
-    which is a separate multi-author work under its own licence.
-  * Modules authored principally by project collaborators. Those modules are
-    deliberately not included here (see CONTRIBUTIONS.md).
-  * Any third-party scientific literature, publisher PDFs, extracted full text
-    or other copyrighted corpus material. None is included (see DATA_POLICY.md).
-  * Third-party models, libraries or datasets referenced by the documentation.
+  * The first is the licence and copyright notice carried by the original
+    capstone repository. It applies to the collaboratively authored code -
+    which includes, among others, Retrieval/retrieval.py, llm/interface.py,
+    run_manifest.py, console_utils.py, project_paths.py and the PDF
+    acquisition modules. That notice is reproduced here unchanged and is not
+    superseded, replaced or narrowed by anything in this repository.
 
-Documentation in this repository is licensed separately; see LICENSE-docs.
+  * The second covers the independent post-capstone work: the evidence
+    sufficiency gate, claim-support and citation-identity verification, the
+    freeze/provenance controls, the evaluation harness, the current Streamlit
+    interface and the public-release sanitization.
+
+Per-file authorship, derived from line-level `git blame` on the original
+history, is set out in CONTRIBUTIONS.md. NOTHING HERE RELICENSES
+COLLABORATOR-AUTHORED CODE UNDER A SINGLE AUTHOR'S NAME. The original work was
+already MIT-licensed, this release stays MIT, and the terms are unchanged; only
+the second copyright line has been added, for the material added since.
+
+If you are a capstone collaborator and want your contribution attributed
+differently, or removed, that will be acted on request.
+
+WHAT THIS LICENCE DOES NOT COVER
+
+  * Third-party scientific literature, publisher PDFs, extracted full text or
+    any other copyrighted corpus material. None is included; see DATA_POLICY.md.
+  * The frozen research evidence store / index. Not included.
+  * Third-party models, libraries and services (all-MiniLM-L6-v2,
+    cross-encoder/ms-marco-MiniLM-L-6-v2, ChromaDB, Sentence Transformers,
+    OpenAI, Ollama, the Semantic Scholar Graph API). Each remains under its own
+    licence and terms.
+  * University capstone deliverable documents (e.g. the technical
+    documentation report). Not included.
+
+Documentation written for this public release is licensed separately; see
+LICENSE-docs.

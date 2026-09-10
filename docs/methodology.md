@@ -52,7 +52,7 @@ Evaluation never runs against the canonical index. The harness:
 4. runs the evaluation against the disposable copy;
 5. re-hashes the canonical source and raises if it changed.
 
-Implementation: [`src/indexing/immutable_index.py`](../src/indexing/immutable_index.py).
+Implementation: [`immutable_index.py`](../immutable_index.py).
 
 This turns "we did not contaminate the index" from an assurance into a checkable claim.
 

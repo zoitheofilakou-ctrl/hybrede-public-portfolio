@@ -1,0 +1,35 @@
+[
+  {
+    "paperId": "synthetic0000000000000000000000000000001",
+    "title": "A synthetic study of hybrid retrieval in clinical literature screening",
+    "abstract": "This is synthetic text written for the HyBreDe public release and does not describe any real study. In this fictional evaluation, a hybrid retrieval configuration combining dense semantic similarity with a lexical BM25 index was compared against a dense-only baseline on a screening task. The fictional hybrid configuration recovered more documents containing exact clinical terminology, while the dense-only baseline recovered more paraphrased matches. No numeric outcome reported here should be cited: the numbers are invented placeholders whose only purpose is to exercise the indexing and retrieval code paths without redistributing copyrighted literature.",
+    "year": 2026,
+    "url": "https://example.invalid/synthetic/1",
+    "externalIds": {
+      "DOI": "10.0000/synthetic.1"
+    },
+    "citationCount": 0
+  },
+  {
+    "paperId": "synthetic0000000000000000000000000000002",
+    "title": "Synthetic notes on evidence sufficiency gating for generated answers",
+    "abstract": "Synthetic text written for the HyBreDe public release. This fictional note discusses treating abstention as a first-class outcome: when retrieved excerpts do not support a requested claim, a system may return an explicit evidence gap instead of an unsupported statement. The note contains no real findings and cites no real work. It exists so that the evidence-sufficiency gate has something to operate on during a smoke test.",
+    "year": 2026,
+    "url": "https://example.invalid/synthetic/2",
+    "externalIds": {
+      "DOI": "10.0000/synthetic.2"
+    },
+    "citationCount": 0
+  },
+  {
+    "paperId": "synthetic0000000000000000000000000000003",
+    "title": "Synthetic full-text example for chunking and reranking",
+    "abstract": "Synthetic text written for the HyBreDe public release. This record carries a synthetic full-text body so that section splitting, chunking, cross-encoder reranking and MMR diversification all have multi-chunk input. Nothing here is a real research result.",
+    "year": 2026,
+    "url": "https://example.invalid/synthetic/3",
+    "externalIds": {
+      "DOI": "10.0000/synthetic.3"
+    },
+    "citationCount": 0
+  }
+]

@@ -35,8 +35,10 @@ claims less.
 - **Corpus not included.** Copyright prevents redistribution, so the published
   retrieval results cannot be reproduced from this repository. See
   [DATA_POLICY.md](../DATA_POLICY.md).
-- **Partial codebase.** Retrieval and generation modules are omitted for authorship
-  reasons, so this repository is not runnable end to end.
+- **Corpus-dependent, not code-dependent.** The full application code is included, so
+  the system is runnable end to end against a corpus **you** supply. It cannot
+  reproduce the published results, because those depend on the frozen corpus and index
+  that are not distributed.
 - **External model dependence.** Results depend on `gpt-4o-mini`, `all-MiniLM-L6-v2`
   and `cross-encoder/ms-marco-MiniLM-L-6-v2`. Hosted model behaviour can change over
   time, and exact reproduction of generation outputs is not guaranteed even with the

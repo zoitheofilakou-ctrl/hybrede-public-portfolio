@@ -1,10 +1,11 @@
 Documentation licence
 =====================
 
-All documentation authored by the copyright holder in this repository -
-specifically README.md, CONTRIBUTIONS.md, DATA_POLICY.md, everything under
-docs/, everything under evaluation/, and examples/README.md - is licensed
-under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+The documentation written by Zoi Theofilakou for this public release -
+specifically README.md, CONTRIBUTIONS.md, DATA_POLICY.md, SANITIZATION.md,
+everything under docs/, everything under evaluation/, and examples/README.md -
+is licensed under the Creative Commons Attribution 4.0 International licence
+(CC BY 4.0).
 
     https://creativecommons.org/licenses/by/4.0/
 
@@ -16,10 +17,15 @@ indicate if changes were made.
 
 SCOPE
 
-This licence covers only the documentation written by the copyright holder for
-this public portfolio repository. It does not extend to:
+This licence covers only the release documentation listed above. Source code in
+this repository is licensed separately under LICENSE (MIT), which carries both
+the original Turku University of Applied Sciences ICT Capstone Team copyright
+notice and the post-capstone copyright notice. In-code docstrings and comments
+are part of the source and are covered by LICENSE, not by this file.
+
+This licence does not extend to:
 
   * scientific literature, abstracts, publisher content or corpus excerpts
     (none of which are included in this repository);
   * documents produced as deliverables of the original university capstone;
-  * material authored by project collaborators.
+  * documentation authored by project collaborators.

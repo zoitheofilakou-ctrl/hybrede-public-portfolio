@@ -1,6 +1,28 @@
 # Examples
 
-This directory intentionally contains **no corpus data**.
+Two things live here:
+
+| Item | Purpose |
+|---|---|
+| [`smoke_test.py`](smoke_test.py) | Startup check: every module imports from a bare checkout, every path resolves from configuration, a missing evidence store fails clearly. With `--build-index` it builds a real hybrid index from the synthetic corpus and queries it. |
+| [`synthetic_corpus/`](synthetic_corpus/) | Three fabricated records (two abstract-only, one with a synthetic full-text body) in the exact schema the indexer expects. Written for this repository; describes nothing real and reproduces nothing copyrighted. |
+
+Run them:
+
+```bash
+python examples/smoke_test.py                 # no dependencies beyond the repo
+python examples/smoke_test.py --build-index   # needs chromadb + sentence-transformers
+```
+
+`--build-index` additionally needs `all-MiniLM-L6-v2` and
+`cross-encoder/ms-marco-MiniLM-L-6-v2` already present in the local Hugging Face cache,
+because retrieval loads them with `local_files_only=True`.
+
+The synthetic corpus is a **plumbing test, not a demo of retrieval quality**. Three
+fabricated records cannot show whether hybrid retrieval works; they show that the code
+runs. For meaningful behaviour you need a real corpus of your own.
+
+## No real corpus data is included here
 
 ## Why it is empty of data
 
@@ -37,21 +59,22 @@ Acceptable licences: **CC0**, **CC BY**, **CC BY-SA**, or unambiguous public dom
 Anything else — including "free to read", "open access" without a stated licence, or
 publisher-hosted PDFs with no licence statement — does not qualify.
 
-## Trying the pipeline without a corpus
+## Building your own corpus
 
-You do not need a full-text corpus to exercise the included stages:
+You do not need any full text to get started:
 
-1. **Acquisition** (`python -m src.acquisition.scraper`) retrieves bibliographic
+1. **Acquisition** (`python data_acquisition/scraper.py`) retrieves bibliographic
    metadata only — titles and abstracts. No publisher content is downloaded, so there
    is no redistribution question for the metadata you generate locally.
-2. **Screening** (`python -m src.screening.llm_screening`) runs entirely on those
-   titles and abstracts.
+2. **Screening** (`python screening/llm_screening.py`) runs entirely on those titles
+   and abstracts and writes `processed/filtered_papers.json`.
+3. **Indexing** (`python Retrieval/retrieval.py index`) will index abstract-only
+   records perfectly well. Full text improves retrieval but is not required.
 
-Together those two stages demonstrate the acquisition and screening design end to end
-using only metadata you fetched yourself under your own API key.
+Abstracts returned by the Semantic Scholar API are still publisher content. Fetching
+them for your own use is not the same as redistributing them — do not commit them.
 
-Full-text acquisition, indexing, retrieval and generation are described in
-[`docs/architecture.md`](../docs/architecture.md) but are not included here — partly
-for copyright reasons, partly because the retrieval and generation modules were
-principally authored by capstone collaborators. See
-[CONTRIBUTIONS.md](../CONTRIBUTIONS.md).
+Full-text acquisition (`data_acquisition/PDFscraper.py`, `data_acquisition/pdf_to_text.py`)
+is included and works, but what it harvests is copyrighted and must stay local.
+See [DATA_POLICY.md](../DATA_POLICY.md) and
+[`docs/architecture.md`](../docs/architecture.md).
