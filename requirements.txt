@@ -1,0 +1,6 @@
+# Sanitized portfolio subset: acquisition, screening and indexing stages only.
+# The retrieval/generation stack of the original project is described in
+# docs/architecture.md but not redistributed here (see CONTRIBUTIONS.md).
+requests>=2.31
+openai>=1.30
+python-dotenv>=1.0
